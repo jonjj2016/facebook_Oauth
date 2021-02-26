@@ -6,8 +6,7 @@ const { ExtractJwt } = require("passport-jwt");
 const User = require('./models/user');
 const LoaclStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const FacebookTokenStrategy = require('passport-facebook');
-// const FacebookTokenStrategy = require('passport-facebook-token');
+const FacebookTokenStrategy = require('passport-facebook-token');
 
 
 
@@ -72,10 +71,11 @@ console.log(process.env.FACEBOOK_CLIENT_SECRET);
 passport.use("facebook",new FacebookTokenStrategy({
   clientID: process.env.FACEBOOK_CLIENT_ID,
   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-  callBackURL:'http://localhost:4004/users/outh/facebook/callback',
-   fbGraphVersion:"v9.0"
+  // callBackURL:'http://localhost:4004/users/outh/facebook/callback',
+  //  fbGraphVersion:"v9.0"
 }, (accessToken, refreshToken, profile, done) => {
     try {
+      console.log("etaexav axper ashkners luus");
       console.log("accessToken",accessToken );
       console.log("refreshToken", refreshToken);
       console.log("profile", profile);

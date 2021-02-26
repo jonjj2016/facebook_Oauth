@@ -13,10 +13,8 @@ const facebookStrategy = passport.authenticate("facebook");
 // const router = express.Router();
 
 router.route('/signup').post(validateBody(schemas.authSchema),signup);
-router.route('/outh/facebook/token').post(passport.authenticate("facebook"),signupFacebook);
-router.route('/outh/facebook/callback', (req, res) => {
-  console.log(req);
-})
+router.route('/outh/facebook/token').post(passport.authenticate("facebook",{session:false}),signupFacebook);
+
 router.route('/signin').post(validateBody(schemas.authSchema),passportLocalStrategy,signIn);
 
 router.route('/secret').get(passportJwtStrategy,secret);
